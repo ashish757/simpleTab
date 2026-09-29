@@ -2,15 +2,17 @@
 is s minimistic new tab page for your browser it is designed to be simple and fast, with a focus on providing quick access to your favorite websites and search engines
 
 
+https://ashish757.github.io/simpleTab/
+
 ![img.png](img.png)
 
 ##  Features
 
 * **Daily Space Backgrounds:** Automatically fetches high-resolution daily space photography directly from the NASA Astronomy Picture of the Day (APOD) API.
 
-* **Multiple Search Engine:** Quickly toggle between Google, DuckDuckGo, and Bing
+* **Multiple Search Engine:**  toggle between Google, DuckDuckGo and Bing
 
-* **Quick Access:** Press `/` anywhere on the page to instantly focus the search bar
+* **Quick Access:** press `/` to  focus the search bar
 
 * **State Persistence:** preferred search engine and shortcuts are saved in local storage
 

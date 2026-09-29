@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+main {
+    background-color: #f5e3e3;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchBar {
+    
+    display: flex;
+    padding: 10px 15px;
+    background: #fff;
+    border-radius: 50px;
+}
+
+.searchBar select {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    margin-right: 10px;
+    width: 85px
+}
+
+#searchInput {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+
+.shortcuts {
+    padding: 1rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.shortcuts .shortcut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

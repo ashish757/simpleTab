@@ -25,7 +25,18 @@ main {
     padding: 10px 15px;
     position: relative;
     border-radius: 50px;
+    animation: Extend 0.5s ease forwards;
 }
+
+@keyframes Extend {
+    0% {
+        width: 30vw; 
+    }
+    100% {
+        width: 50vw; 
+    }
+}
+
 
 .searchBar select {
     border: none;
@@ -54,6 +65,17 @@ form {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+    animation-delay: 4s;
+    animation: FadeIn 1.5s ease forwards;
+}
+
+@keyframes FadeIn {
+    0% {
+       opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .shortcuts .shortcut{
@@ -68,7 +90,10 @@ form {
     cursor: pointer;
     max-width: 100px;
     min-width: 100px;
+
 } 
+
+
 .shortcut span {
     max-width: 100%;
     font-size: 1rem;
@@ -89,7 +114,16 @@ form {
 
 .time {
     padding: 1rem;
+    animation: slideUp .7s ease forwards;
+}
 
+@keyframes slideUp {
+    0% {
+        transform: translateY(4rem); 
+    }
+    100% {
+        transform: translateY(0); 
+    }
 }
 
 #currentTime {

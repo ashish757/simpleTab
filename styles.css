@@ -173,7 +173,7 @@ form {
     content: '';
     position: absolute;
     top: -3px; left: -3px; right: -3px; bottom: -3px;
-    background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(90deg, #ff000064, #ff730064, #fffb0099, #48ff0099, #00ffd564, #002bff99, #7a00ff64, #ff00c864, #ff000064);
     background-size: 400%;
     border-radius: 50px; 
     filter: blur(20px);
@@ -183,7 +183,7 @@ form {
 }
 
 .searchBar.focused::after {
-    opacity: 1;
+    opacity: 0.9;
     animation: gradientFlow 15s linear infinite;
 }
 

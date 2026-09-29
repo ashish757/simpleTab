@@ -116,6 +116,10 @@ form {
     padding: 1rem;
     animation: slideUp .7s ease forwards;
 }
+#currentTime {
+    font-variant-numeric: tabular-nums;
+    font-family: 'Share Tech Mono', monospace;
+}
 
 @keyframes slideUp {
     0% {

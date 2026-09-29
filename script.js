@@ -193,3 +193,28 @@ document.getElementById('addShortcutBtn').addEventListener('click', (e) => {
           console.log(shortcuts);
     }
 });
+
+
+async function fetchNasaBackground() {
+    const apiKey = 'iHepsNl4XKNP2vCC1RufqaArtbMuqAD8fxXxG9CL'; 
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const mainElement = document.querySelector('main');
+
+        if (data.media_type === 'image') {
+            const imageUrl = data.hdurl || data.url;
+            mainElement.style.backgroundImage = `url('${imageUrl}')`;
+        } else {
+            mainElement.style.backgroundColor = '#1a1a2e'; 
+        }
+    } catch (error) {
+        console.error('Error fetching NASA APOD:', error);
+        document.querySelector('main').style.backgroundColor = '#1a1a2e'; 
+    }
+}
+
+fetchNasaBackground();

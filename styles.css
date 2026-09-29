@@ -9,7 +9,6 @@ body {
 }
 
 main {
-    background-color: #f5e3e3;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -117,6 +116,7 @@ form {
     animation: slideUp .7s ease forwards;
 }
 #currentTime {
+    text-shadow: 0px 0px 50px #f5f2f2;
     font-variant-numeric: tabular-nums;
     font-family: 'Share Tech Mono', monospace;
 }

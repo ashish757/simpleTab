@@ -21,3 +21,20 @@ form.addEventListener('submit', (e) => {
         window.open(searchUrl, "_self");
     }
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const currentTimeElement = document.getElementById('currentTime');
+
+    function updateTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    updateTime(); 
+    setInterval(updateTime, 1000);
+});

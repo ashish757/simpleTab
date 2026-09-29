@@ -17,7 +17,8 @@ main {
 }
 
 .searchBar {
-    
+    width: 50vw;
+    min-width: 400px;
     display: flex;
     padding: 10px 15px;
     background: #fff;
@@ -33,6 +34,9 @@ main {
     width: 85px
 }
 
+form {
+    width: 100%;
+}
 #searchInput {
     border: none;
     outline: none;
@@ -43,6 +47,7 @@ main {
 
 .shortcuts {
     padding: 1rem;
+    padding-top: 3rem;
     display: flex;
     gap: 1.5rem;
 }
@@ -52,4 +57,25 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: .6rem;
+    padding: .5rem 1rem;
+    background: #ffffff6e;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.shortcut:hover {
+    background: #ffffffdb;
+    box-shadow: 0px 0px 5px #0000001f;
+}
+
+.time {
+    padding: 1rem;
+
+}
+
+#currentTime {
+    font-size: 5rem;
+    margin-bottom: 1rem;
 }

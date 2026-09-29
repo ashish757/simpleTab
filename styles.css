@@ -4,7 +4,9 @@
     box-sizing: border-box;
 }
 
-
+body {
+    font-family: 'Poppins', sans-serif;
+}
 
 main {
     background-color: #f5e3e3;
@@ -46,9 +48,10 @@ form {
 
 
 .shortcuts {
-    padding: 1rem;
+    padding: 1rem 5rem;
     padding-top: 3rem;
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
 }
 
@@ -62,8 +65,21 @@ form {
     background: #ffffff6e;
     border-radius: 10px;
     cursor: pointer;
+    max-width: 100px;
+    min-width: 100px;
+} 
+.shortcut span {
+    max-width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-
+ .shortcut img {
+    width: 32px;
+    height: 32px;
+} 
 
 .shortcut:hover {
     background: #ffffffdb;

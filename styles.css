@@ -10,7 +10,6 @@ body {
 
 main {
     background-color: #f5e3e3;
-
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -19,11 +18,12 @@ main {
 }
 
 .searchBar {
+    background-color: #fff;
     width: 50vw;
     min-width: 400px;
     display: flex;
     padding: 10px 15px;
-    background: #fff;
+    position: relative;
     border-radius: 50px;
 }
 
@@ -122,5 +122,38 @@ form {
     z-index: 100; 
     position: relative; 
     transform: scale(1.1) translateY(-10px);
-    width: 70vw;
+    width: 60vw;
+}
+
+.searchBar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #fff; 
+    border-radius: 50px; 
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.searchBar::after {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 400%;
+    border-radius: 50px; 
+    filter: blur(20px);
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.searchBar.focused::after {
+    opacity: 1;
+    animation: gradientFlow 15s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
 }

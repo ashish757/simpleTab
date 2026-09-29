@@ -1,19 +1,23 @@
 const form = document.getElementById('searchForm');
-const searchInput = document.getElementById('searchInput').value;
-const searchEngine = document.getElementById('searchEngine').value;
-
+const searchInput = document.getElementById('searchInput');
+const searchEngine = document.getElementById('searchEngine');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    
+    const query = encodeURIComponent(searchInput.value);
+    const engine = searchEngine.value;
     let searchUrl = '';
 
-    if (searchEngine === 'google') {
-        searchUrl = `https://www.google.com/search?q=${searchInput}`;
-    } else if (searchEngine === 'bing') {
-        searchUrl = `https://www.bing.com/search?q=${searchInput}`;
-    } else if (searchEngine === 'duckduckgo') {
-        searchUrl = `https://duckduckgo.com/?q=${searchInput}`;
+    if (engine === 'google') {
+        searchUrl = `https://www.google.com/search?q=${query}`;
+    } else if (engine === 'bing') {
+        searchUrl = `https://www.bing.com/search?q=${query}`;
+    } else if (engine === 'duckduckgo') {
+        searchUrl = `https://duckduckgo.com/?q=${query}`;
     }
 
-    window.open(searchUrl, '_blank');
+    if (searchUrl) {
+        window.open(searchUrl, "_self");
+    }
 });

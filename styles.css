@@ -44,6 +44,7 @@ form {
     outline: none;
     padding: 10px;
     font-size: 1.2rem;
+    width: 100%;
 }
 
 
@@ -94,4 +95,32 @@ form {
 #currentTime {
     font-size: 5rem;
     margin-bottom: 1rem;
+}
+
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.271);
+    z-index: 99;
+    display: none; 
+   backdrop-filter: blur(3px);
+}
+
+#overlay.active {
+    display: block; 
+}
+
+.searchBar {
+    transition: transform 0.3s ease, z-index 0.3s ease, width 0.2s ease;
+}
+.searchBar.focused {
+    z-index: 100; 
+    position: relative; 
+    transform: scale(1.1) translateY(-10px);
+    width: 70vw;
 }

@@ -68,6 +68,7 @@ function updatePlaceholder() {
     } else if (selectedEngine === 'duckduckgo') {
         placeholderText = 'Search DuckDuckGo...';
     }
+    placeholderText += ' (press / to focus)';
 
     searchInput.placeholder = placeholderText;
 }
@@ -106,3 +107,24 @@ function populateShortcuts() {
 }
 
 populateShortcuts();
+
+
+const searchWrapper = document.getElementById('searchWrapper');
+const overlay = document.getElementById('overlay');
+
+searchInput.addEventListener('focus', () => {
+    searchWrapper.classList.add('focused');
+    overlay.classList.add('active');
+})
+
+searchInput.addEventListener('blur', () => {
+    searchWrapper.classList.remove('focused');
+    overlay.classList.remove('active');
+})
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === '/') {
+        e.preventDefault();
+        searchInput.focus();
+    }
+})

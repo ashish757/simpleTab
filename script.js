@@ -25,6 +25,11 @@ form.addEventListener('submit', (e) => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const selectedEngine = localStorage.getItem('selectedEngine') || 'google';
+    searchEngine.value = selectedEngine;
+    updatePlaceholder();
+
     const currentTimeElement = document.getElementById('currentTime');
 
     function updateTime() {
@@ -38,3 +43,29 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTime(); 
     setInterval(updateTime, 1000);
 });
+
+function updatePlaceholder() {
+    const selectedEngine = searchEngine.value;
+    let placeholderText = '';
+
+    if (selectedEngine === 'google') {
+        placeholderText = 'Search Google...';
+    } else if (selectedEngine === 'bing') {
+        placeholderText = 'Search Bing...';
+    } else if (selectedEngine === 'duckduckgo') {
+        placeholderText = 'Search DuckDuckGo...';
+    }
+
+    searchInput.placeholder = placeholderText;
+}
+
+
+
+
+searchEngine.addEventListener('change', () => {
+    const selectedEngine = searchEngine.value;
+    localStorage.setItem('selectedEngine', selectedEngine);
+    updatePlaceholder();
+});
+
+

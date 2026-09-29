@@ -12,9 +12,9 @@ main {
     background-color: #f5e3e3;
     height: 100vh;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    padding-top: 8rem;
 }
 
 .searchBar {
@@ -60,7 +60,7 @@ form {
 
 
 .shortcuts {
-    padding: 1rem 5rem;
+    padding: 1rem 15vw;
     padding-top: 3rem;
     display: flex;
     flex-wrap: wrap;
@@ -194,4 +194,60 @@ form {
 @keyframes gradientFlow {
     0% { background-position: 0% 50%; }
     100% { background-position: 400% 50%; }
+}
+
+
+
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    opacity: 0;
+    display: none;
+    z-index: 100;
+    width: 35vw;
+    min-width: 350px;
+}
+
+#modal.active {
+    opacity: 1;
+    display: block;
+}
+
+#modal .addShortcut {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+
+#modal #closeModal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #000;
+    cursor: pointer;
+}
+
+.addShortcut input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.addShortcut button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #252526;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }

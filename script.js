@@ -194,27 +194,51 @@ document.getElementById('addShortcutBtn').addEventListener('click', (e) => {
     }
 });
 
+const FALLBACK_COLOR = '#1a1a2e';
+const QUERIES = ['nebula', 'galaxy', 'supernova', 'star cluster', 'hubble deep field', 'planetary nebula'];
+
+function setBackground(url) {
+  const main = document.querySelector('main');
+  const img = new Image();
+  img.onload = () => {
+    main.style.backgroundImage = `url('${url}')`;
+    main.style.backgroundSize = 'cover';
+    main.style.backgroundPosition = 'center';
+    main.style.backgroundRepeat = 'no-repeat';
+  };
+  img.onerror = () => {
+    if (url.includes('~large')) setBackground(url.replace('~large', '~medium'));
+    else main.style.backgroundColor = FALLBACK_COLOR;
+  };
+  img.src = url;
+}
 
 async function fetchNasaBackground() {
-    const apiKey = 'iHepsNl4XKNP2vCC1RufqaArtbMuqAD8fxXxG9CL'; 
-    const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+  const main = document.querySelector('main');
+  main.style.backgroundColor = FALLBACK_COLOR;
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
+  const seed = Math.floor(Date.now() / 86400000);
+  const query = QUERIES[seed % QUERIES.length];
+  const apiUrl = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}&media_type=image&page_size=100`;
 
-        const mainElement = document.querySelector('main');
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    const response = await fetch(apiUrl, { signal: controller.signal });
+    clearTimeout(timer);
 
-        if (data.media_type === 'image') {
-            const imageUrl = data.hdurl || data.url;
-            mainElement.style.backgroundImage = `url('${imageUrl}')`;
-        } else {
-            mainElement.style.backgroundColor = '#1a1a2e'; 
-        }
-    } catch (error) {
-        console.error('Error fetching NASA APOD:', error);
-        document.querySelector('main').style.backgroundColor = '#1a1a2e'; 
-    }
+    if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
+
+    const data = await response.json();
+    const items = (data.collection?.items || []).filter(i => i.links?.[0]?.href);
+    if (!items.length) throw new Error('No images returned');
+
+    const item = items[seed % items.length];
+    setBackground(item.links[0].href.replace('~thumb', '~large'));
+  } catch (error) {
+    console.error('Error fetching NASA image:', error);
+    main.style.backgroundColor = FALLBACK_COLOR;
+  }
 }
 
 fetchNasaBackground();
